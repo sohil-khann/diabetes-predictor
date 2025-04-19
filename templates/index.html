@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="float-right ml-5" style="margin-top: 100px; margin-right: 50px;">
+    {% if final == 0 %}
+       <h1> <span class="badge badge-pill badge-info">No Diabetes</span></h1>
+    {% elif final == 1 %}
+       <h3> <span class="badge badge-pill badge-danger">You May Have Diabetes!!</span></h3>
+        <h4>Please Consult A  Doctor Immediately!!</h4>
+    {% endif %}
+
+
+    </div>
+    <div class="float-left ml-5" style="margin-top: 100px;">
+   <h1>Diabetes Prediction</h1>
+    <img class="diabetes" style="width: 400px; height: 400px; background-size:auto 100%;" src='/static/img/diabetes.png'  alt="sad">
+    </div>
+    <div class="container pt-3" style="background: linear-gradient(135deg,rgb(149, 187, 245) 0%,rgb(143, 221, 221) 100%); padding: 20px; width: 100%; height: 100%; max-width: 100%; max-height: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4" style="margin-right: 450px; background-color: #98D8C8; border: 2px solid black; padding: 15px; border-radius: 5px;">
+
+            <form action="." method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="Name">Your Name</label>
+                    <input type="text" class="form-control" id="Name" name="Name" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" id="gender" name="gender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" step="0.1" class="form-control" id="age" name="age" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label for="hypertension">Hypertension</label>
+                    <select class="form-control" id="hypertension" name="hypertension">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="heart_disease">Heart Disease</label>
+                    <select class="form-control" id="heart_disease" name="heart_disease">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="smoking_history">Smoking History</label>
+                    <select class="form-control" id="smoking_history" name="smoking_history">
+                        <option value="never">Never</option>
+                        <option value="former">Former</option>
+                        <option value="current">Current</option>
+                        <option value="No Info">No Info</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bmi">BMI</label>
+                    <input type="number" step="0.01" class="form-control" id="bmi" name="bmi" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label for="HbA1c_level">HbA1c Level</label>
+                    <input type="number" step="0.1" class="form-control" id="HbA1c_level" name="HbA1c_level" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label for="blood_glucose_level">Blood Glucose Level</label>
+                    <input type="number" step="0.1" class="form-control" id="blood_glucose_level" name="blood_glucose_level" placeholder="" required>
+                </div>
+                <button type="submit" value="Submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}

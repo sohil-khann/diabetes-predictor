@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="min-vh-100 d-flex flex-column" style="background: linear-gradient(135deg,rgb(149, 187, 245) 0%,rgb(143, 221, 221) 100%);">
+    <div class="container py-5 flex-grow-1">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="d-flex justify-content-between align-items-center mb-4">
+                    Prediction Results
+                    <a href="/delete" class="badge badge-danger">Delete all results?</a>
+                </h1>
+
+                <div class="table-responsive" style="background-color: #f0f8ff; border-radius: 3px; padding: 10px; border: 1px solid #ccc;">
+                    <table class="table bg-white rounded shadow">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Hypertension</th>
+                                <th scope="col">Heart Disease</th>
+                                <th scope="col">Smoking History</th>
+                                <th scope="col">BMI</th>
+                                <th scope="col">HbA1c Level</th>
+                                <th scope="col">Blood Glucose</th>
+                                <th scope="col">is_diabetic?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in preds %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ data.Name }}</td>
+                                    <td>{{ data.gender }}</td>
+                                    <td>{{ data.age }}</td>
+                                    <td>{{ data.hypertension|yesno:"Yes,No" }}</td>
+                                    <td>{{ data.heart_disease|yesno:"Yes,No" }}</td>
+                                    <td>{{ data.smoking_history }}</td>
+                                    <td>{{ data.bmi }}</td>
+                                    <td>{{ data.HbA1c_level }}</td>
+                                    <td>{{ data.blood_glucose_level }}</td>
+                                    <td>{{ data.is_diabetic }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer is already in base.html -->
+</div>
+{% endblock %}
